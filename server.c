@@ -6,16 +6,36 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 21:41:52 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/30 23:25:17 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/04/04 00:53:20 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
+#include<signal.h>
 
-int main(int ac, char **av)
+void ft_print_string(int sig)
 {
-   pid_t pid;
-   pid = getpid();
-   printf("pid : %d\n", pid);
+   static int i = 7;
+   static int bit = 0;
+   bit += sig << i;
+   i--;
+   if (i == -1)
+   {
+      write(1,&bit,1);
+      i = 7;
+      bit = 0;
+   }
+}
+
+int main()
+{
+   int pid = getpid();
+   printf("%d\n", pid);
+      signal(SIGUSR1, ft_print_string);
+      signal(SIGUSR2, ft_print_string);
+   while (1)
+   {
+      pause();
+   }
 }

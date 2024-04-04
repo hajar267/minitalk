@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 21:23:07 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/03/31 23:23:48 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/04/04 01:56:59 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void send_to_server(unsigned char c, int pid)
     while(i >= 0)
     {
         if((bit = c >> i) & 1)
-            kill(SIGUSR1, pid);
-        else
             kill(SIGUSR2, pid);
+        else
+            kill(SIGUSR1, pid);
         i--;
     }
 }
@@ -46,12 +46,12 @@ int main(int ac, char **av)
     if (ac == 3)
     {
     int i=0;
-   int pid;
-   pid = ft_atoi(av[1]);
-   while(av[2][i])
-   {
-    send_to_server((unsigned char)av[2][i], pid);
-    i++;
+    int pid;
+    pid = ft_atoi(av[1]);
+    while(av[2][i])
+    {
+        send_to_server(av[2][i], pid);
+        i++;
     }
    }
 }
