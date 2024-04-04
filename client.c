@@ -6,11 +6,12 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 21:23:07 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/04/04 01:56:59 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/04/04 03:43:00 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
+#include <stdio.h>
 void send_to_server(unsigned char c, int pid)
 {
     int i=7;
@@ -37,14 +38,14 @@ int ft_atoi(char *str)
     if(str[i] == '-' || str[i] == '+')
         i++;
     while(str[i] >= '0' && str[i] <= '9')
-        somme = somme * 10 + str[i] - '0';
+        somme = somme * 10 + str[i++] - '0';
     return(signe * somme);
 }
 
 int main(int ac, char **av)
 {
-    if (ac == 3)
-    {
+    if(ac == 3)
+   {
     int i=0;
     int pid;
     pid = ft_atoi(av[1]);
