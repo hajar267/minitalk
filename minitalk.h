@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 22:19:06 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/04/04 22:22:30 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/05/20 17:29:54 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include<signal.h>
 #include<unistd.h>
 #include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 
 void send_to_server(unsigned char c, int pid);
 int ft_atoi(char *str);
