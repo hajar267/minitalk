@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 21:23:07 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/05/21 14:35:02 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/05/21 22:11:19 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@ int main(int ac, char **av)
 		int i;
 		pid = ft_atoi(av[1]);
 		if (pid <= 0)
-		{
-			
-			exit(EXIT_FAILURE);	
-		}
+			exit(EXIT_FAILURE);
 		i = 0;
 		while(av[2][i])
 		{
 			send_to_server(av[2][i], pid);
 			i++;
 		}
+		send_to_server('\0',pid);
    }
+	else
+		write(2,"veuillez entrer one arg\n", 24);
 }
