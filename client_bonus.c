@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 21:23:07 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/05/22 04:07:08 by hfiqar           ###   ########.fr       */
+/*   Created: 2024/05/22 03:40:27 by hfiqar            #+#    #+#             */
+/*   Updated: 2024/05/22 04:15:47 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
+
+void	print_mssg(int sig)
+{
+	if (sig == SIGUSR2)
+		write(1, "sf rah lmssg wssel (^--^)\n", 26);
+}
 
 void	send_to_server(unsigned char c, int pid)
 {
@@ -53,6 +59,7 @@ int	main(int ac, char **av)
 	int	pid;
 	int	i;
 
+	signal(SIGUSR2, print_mssg);
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
